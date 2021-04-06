@@ -13,7 +13,6 @@ namespace SalesMvc.Data
             : base(options)
         {
         }
-
         public DbSet<Department> Department { get; set; }
 
         public DbSet<Seller> Seller { get; set; }
