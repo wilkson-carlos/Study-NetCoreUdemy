@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SalesMvc.Models;
+using SalesMvc.Models.ViewModels;
+using SalesMvc.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +11,33 @@ namespace SalesMvc.Controllers
 {
     public class SellersController : Controller
     {
+        private readonly SellerService _sellerService;
+        private readonly DepartmentService _departmentService;
+
+        public SellersController(SellerService sellerService, DepartmentService departmentService)
+        {
+            _sellerService = sellerService;
+            _departmentService = departmentService;
+
+        }
         public IActionResult Index()
         {
-            return View();
+            var list = _sellerService.FindAll();
+            return View(list);
+        }
+        public async Task<IActionResult> Create()
+        {
+            var departments = await _departmentService.FindAllAsync();
+            var viewModel = new SellerFormViewModel { Departments = departments };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Seller seller)
+        {
+            _sellerService.Insert(seller);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

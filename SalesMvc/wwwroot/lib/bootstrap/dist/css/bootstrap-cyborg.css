@@ -3040,9 +3040,11 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
-  color: #ffffff;
-  background-color: #424242;
-  border-color: #424242;
+    color: #ffffff;
+    background-color: #424242;
+    border-color: #424242;
+    
+
 }
 .btn-default:focus,
 .btn-default.focus {
@@ -5854,9 +5856,8 @@ button.close {
   padding: 20px;
 }
 .modal-footer {
-  padding: 20px;
+  padding: 5px;
   text-align: right;
-  border-top: 1px solid #282828;
 }
 .modal-footer .btn + .btn {
   margin-bottom: 0;
