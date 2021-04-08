@@ -7,13 +7,13 @@
 <h2>Departments</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-default">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                <h5>@Html.DisplayNameFor(model => model.Name)</h5>
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th></th>
         </tr>
@@ -27,7 +27,7 @@
                 </td>
 
                 <td>
-                    <div class="modal-footer">
+                    <div class="modal-footer" style="text-align:right">
                         <a button type="button" class="btn btn-default" data-dismiss="modal" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                         <a button type="button" class="btn btn-default" data-dismiss="modal" asp-action="Details" asp-route-id="@item.Id">Details</a>
                         <a button type="button" class="btn btn-default" data-dismiss="modal" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
